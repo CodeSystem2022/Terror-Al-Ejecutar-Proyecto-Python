@@ -66,3 +66,40 @@ panel_botones.pack()
 
 # evitar que la pantalla se cierre
 aplicacion.mainloop()
+
+
+
+#--------------CALCULADORA-----------------------
+visor_calculadora = Entry(panel_calculadora,
+                         font=('Dosis', 16, 'bold'),
+                         width=32,
+                         bd=1)
+visor_calculadora.grid(row=0,
+                       column=0,
+                       columnspan=4)
+
+botones_calculadora = ['7', '8', '9', '+', '4', '5', '6', '-',
+                       '1', '2', '3', 'R', 'Borrar', '0', '/']
+
+fila = 1
+columna = 0
+for boton in botones_calculadora:
+    boton = Button(panel_calculadora,
+                   text=boton.title(),
+                   font=('Dosis', 16, 'bold'),
+                   fg='white',
+                   bg='azure4',
+                   bd=1,
+                   width=8)
+    boton.grid(row=fila,
+               column=columna)
+
+    if columna == 3:
+        fila += 1
+
+    columna += 1
+
+    if columna == 4:
+        columna = 0
+
+
