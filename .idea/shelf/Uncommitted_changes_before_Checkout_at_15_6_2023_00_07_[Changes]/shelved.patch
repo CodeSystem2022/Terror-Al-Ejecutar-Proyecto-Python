@@ -1,0 +1,37 @@
+Index: Ventana-y-Paneles/mi_restaurante.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from tkinter import *\r\n\r\n\r\n# iniciar tkinter\r\naplicacion = Tk()\r\n\r\n# tamaño de la ventana\r\naplicacion.geometry('1020x630+0+0')\r\n\r\n# evitar maximizar\r\naplicacion.resizable(0, 0)\r\n\r\n# titulo de la ventana\r\naplicacion.title(\"Mi Restaurante - Sistema de Facturación\")\r\n\r\n# color de fondo de la ventana\r\naplicacion.config(bg='burlywood')\r\n\r\n# panel superior\r\npanel_superior = Frame(aplicacion, bd=1, relief=FLAT)\r\npanel_superior.pack(side=TOP)\r\n\r\n# etiqueta titulo\r\netiqueta_titulo = Label(panel_superior, text='Sistema de Facturacion', fg='azure4',\r\n                        font=('Dosis', 58), bg='burlywood', width=27)\r\netiqueta_titulo.grid(row=0, column=0)\r\n\r\n# panel izquierdo\r\npanel_izquierdo = Frame(aplicacion, bd=1, relief=FLAT)\r\npanel_izquierdo.pack(side=LEFT)\r\n\r\n# panel costos\r\npanel_costos = Frame(panel_izquierdo, bd=1, relief=FLAT, bg='azure4', padx=50)\r\npanel_costos.pack(side=BOTTOM)\r\n\r\n# panel comidas\r\npanel_comidas = LabelFrame(panel_izquierdo, text='Comida', font=('Dosis', 19, 'bold'),\r\n                           bd=1, relief=FLAT, fg='azure4')\r\npanel_comidas.pack(side=LEFT)\r\n\r\n# panel bebidas\r\npanel_bebidas = LabelFrame(panel_izquierdo, text='Bebidas', font=('Dosis', 19, 'bold'),\r\n                           bd=1, relief=FLAT, fg='azure4')\r\npanel_bebidas.pack(side=LEFT)\r\n\r\n# panel postres\r\npanel_postres = LabelFrame(panel_izquierdo, text='Postres', font=('Dosis', 19, 'bold'),\r\n                           bd=1, relief=FLAT, fg='azure4')\r\npanel_postres.pack(side=LEFT)\r\n\r\n# panel derecha\r\npanel_derecha = Frame(aplicacion, bd=1, relief=FLAT)\r\npanel_derecha.pack(side=RIGHT)\r\n\r\n# panel calculadora\r\npanel_calculadora = Frame(panel_derecha, bd=1, relief=FLAT, bg='burlywood')\r\npanel_calculadora.pack()\r\n\r\n# panel recibo\r\npanel_recibo = Frame(panel_derecha, bd=1, relief=FLAT, bg='burlywood')\r\npanel_recibo.pack()\r\n\r\n# panel botones\r\npanel_botones = Frame(panel_derecha, bd=1, relief=FLAT, bg='burlywood')\r\npanel_botones.pack()\r\n\r\n# variables\r\nvar_costo_comida = StringVar()\r\nvar_costo_bebida = StringVar()\r\nvar_costo_postres = StringVar()\r\nvar_subtotal = StringVar()\r\nvar_impuesto = StringVar()\r\nvar_total = StringVar()\r\n\r\n# Etiquetas de costo y campos de entrada\r\netiqueta_costo_comida = Label(panel_costos,\r\n                              text='Costo Comida',\r\n                              font=('Dosis', 12, 'bold'),\r\n                              background='azure4',\r\n                              fg='White')\r\netiqueta_costo_comida.grid(row=0, column=0)\r\ntexto_costo_comida = Entry(panel_costos,\r\n                           font=('Dosis', 12, 'bold'),\r\n                           bd=1,\r\n                           width=10,\r\n                           state='readonly',\r\n                           textvariable=var_costo_comida)\r\ntexto_costo_comida.grid(row=0, column=1, padx=41)\r\n\r\netiqueta_costo_bebida = Label(panel_costos,\r\n                              text='Costo Bebida',\r\n                              font=('Dosis', 12, 'bold'),\r\n                              background='azure4',\r\n                              fg='White')\r\netiqueta_costo_bebida.grid(row=1, column=0)\r\ntexto_costo_bebida = Entry(panel_costos,\r\n                           font=('Dosis', 12, 'bold'),\r\n                           bd=1,\r\n                           width=10,\r\n                           state='readonly',\r\n                           textvariable=var_costo_bebida)\r\ntexto_costo_bebida.grid(row=1, column=1, padx=41)\r\n\r\netiqueta_costo_postre = Label(panel_costos,\r\n                              text='Costo Postre',\r\n                              font=('Dosis', 12, 'bold'),\r\n                              background='azure4',\r\n                              fg='White')\r\netiqueta_costo_postre.grid(row=2, column=0)\r\ntexto_costo_postre = Entry(panel_costos,\r\n                           font=('Dosis', 12, 'bold'),\r\n                           bd=1,\r\n                           width=10,\r\n                           state='readonly',\r\n                           textvariable=var_costo_postres)\r\ntexto_costo_postre.grid(row=2, column=1, padx=41)\r\n\r\netiqueta_subtotal = Label(panel_costos,\r\n                              text='Subtotal',\r\n                              font=('Dosis', 12, 'bold'),\r\n                              background='azure4',\r\n                              fg='White')\r\netiqueta_subtotal.grid(row=0, column=2)\r\ntexto_subtotal = Entry(panel_costos,\r\n                           font=('Dosis', 12, 'bold'),\r\n                           bd=1,\r\n                           width=10,\r\n                           state='readonly',\r\n                           textvariable=var_subtotal)\r\ntexto_subtotal.grid(row=0, column=3, padx=41)\r\n\r\netiqueta_impuestos = Label(panel_costos,\r\n                              text='Impuestos',\r\n                              font=('Dosis', 12, 'bold'),\r\n                              background='azure4',\r\n                              fg='White')\r\netiqueta_impuestos.grid(row=1, column=2)\r\ntexto_impuestos = Entry(panel_costos,\r\n                           font=('Dosis', 12, 'bold'),\r\n                           bd=1,\r\n                           width=10,\r\n                           state='readonly',\r\n                           textvariable=var_impuesto)\r\ntexto_impuestos.grid(row=1, column=3, padx=41)\r\n\r\netiqueta_total = Label(panel_costos,\r\n                              text='Total',\r\n                              font=('Dosis', 12, 'bold'),\r\n                              background='azure4',\r\n                              fg='White')\r\netiqueta_total.grid(row=2, column=2)\r\ntexto_total = Entry(panel_costos,\r\n                           font=('Dosis', 12, 'bold'),\r\n                           bd=1,\r\n                           width=10,\r\n                           state='readonly',\r\n                           textvariable=var_total)\r\ntexto_total.grid(row=2, column=3, padx=41)\r\n\r\n# botones\r\nbotones = ['total', 'recibo', 'guardar', 'resetear']\r\n\r\n\r\n# evitar que la pantalla se cierre\r\naplicacion.mainloop()\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Ventana-y-Paneles/mi_restaurante.py b/Ventana-y-Paneles/mi_restaurante.py
+--- a/Ventana-y-Paneles/mi_restaurante.py	(revision e9a149145f5f6e264d5d6e77e6c54470e66a4e9a)
++++ b/Ventana-y-Paneles/mi_restaurante.py	(date 1686798287404)
+@@ -159,7 +159,26 @@
+ 
+ # botones
+ botones = ['total', 'recibo', 'guardar', 'resetear']
++columnas = 0
++for boton in botones:
++    boton = Button(panel_botones,
++                   text=boton.title(),
++                   font=('Dosis', 14, 'bold'),
++                   fg='white',
++                   bg='azure4',
++                   bd=1,
++                   width=9)
+ 
++    boton.grid(row=0, column=columnas)
++    columnas+= 1
++
++# area de recibo
++texto_recibo = Text(panel_recibo,
++                    font=('Dosis', 12, 'bold'),
++                    bd=1,
++                    width=42,
++                    height=10)
++texto_recibo.grid(row=0, column=0)
+ 
+ # evitar que la pantalla se cierre
+ aplicacion.mainloop()
