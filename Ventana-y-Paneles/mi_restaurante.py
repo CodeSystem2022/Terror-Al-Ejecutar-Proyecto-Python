@@ -66,3 +66,5 @@ panel_botones.pack()
 
 # evitar que la pantalla se cierre
 aplicacion.mainloop()
+
+# Haciendo pruebas
