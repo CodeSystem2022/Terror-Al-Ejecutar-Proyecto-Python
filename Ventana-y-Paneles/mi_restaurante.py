@@ -1,5 +1,57 @@
 from tkinter import *
+import random
+import datetime
+from tkinter import filedialog, messagebox
 
+def recibo():
+    texto_recibo.delete(1.0, END)
+    num_recibo = f'N# - {random.randint(1000, 9999)}'
+    fecha = datetime.datetime.now()
+    fecha_recibo = f'{fecha.day}/{fecha.month}/{fecha.year} - {fecha.hour}: {fecha.minute}'
+    texto_recibo.insert(END, f'Datos:\t{num_recibo}\t\t{fecha_recibo}\n')
+    texto_recibo.insert(END, f'*' * 47 + '\n')
+    texto_recibo.insert(END, 'Items\t\tCant.\tCosto Items\n')
+    texto_recibo.insert(END, f'-' * 54'\n')
+
+    x = 0
+    for comida in texto_comida:
+        if comida.get() != '0':
+            texto_recibo.insert(END, f'{lista_comidas[x]}\t\t{comida.get()}\t'
+                                f'$ {int(comida.get()) * precios_comida[x]}\n')
+        x += 1    
+
+    x = 0
+    for bebida in texto_comida:
+        if bebida.get() != '0':
+            texto_recibo.insert(END, f'{lista_bebidas[x]}\t\t{bebida.get()}\t'
+                                f'$ {int(bebida.get()) * precios_bebida[x]}\n')
+        x += 1
+
+    x = 0
+    for postres in texto_postres:
+        if postres.get() != '0':
+            texto_recibo.insert(END, f'{lista_postres[x]}\t\t{postres.get()}\t'
+                                f'$ {int(postres.get()) * precios_postres[x]}\n')
+        x += 1  
+
+    texto_recibo.insert(END, f'-' * 54'\n')
+    texto_recibo.insert(END, f' Costo de la Comida: \t\t\t{var_costo_comida.get()}\n')
+    texto_recibo.insert(END, f' Costo de la Bebida: \t\t\t{var_costo_bebida.get()}\n')
+    texto_recibo.insert(END, f' Costo de la Postres: \t\t\t{var_costo_postres.get()}\n')
+    texto_recibo.insert(END, f'-' * 54'\n')
+    texto_recibo.insert(END, f' Sub-total : \t\t\t{var_subtotal.get()}\n')
+    texto_recibo.insert(END, f' Impuetos: \t\t\t{var_impuesto.get()}\n')
+    texto_recibo.insert(END, f' Total : \t\t\t{var_total.get()}\n')
+    texto_recibo.insert(END, f'*' * 47 + '\n')
+    texto_recibo.insert(END, 'Lo esperamos pronto')
+
+def guardar():
+    info_recibo = texto_recibo.get(1.0, END)
+    archivo = filedialog.asksaveasfile(mode='w', defaultextension='.txt')
+    archivo.write(info_recibo)
+    archivo.close()
+    messagebox.showinfo('Información', 'Su recibo ha sido guardado')
+      
 
 # iniciar tkinter
 aplicacion = Tk()
@@ -171,6 +223,10 @@ for boton in botones:
 
     boton.grid(row=0, column=columnas)
     columnas+= 1
+
+botones_creados[0].config(command=total)
+botones_creados[1].config(command=recibo)
+botones_creados[1].config(command=guardar)    
 
 # area de recibo
 texto_recibo = Text(panel_recibo,
