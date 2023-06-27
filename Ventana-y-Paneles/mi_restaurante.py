@@ -383,5 +383,4 @@ texto_total = Entry(panel_costos,
                         textvariable=var_total)
 texto_total.grid(row=2, column=3, padx=41)
 
-# evitar que la pantalla se cierre
-aplicacion.mainloop()
+
