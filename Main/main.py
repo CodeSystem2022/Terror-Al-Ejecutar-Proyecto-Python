@@ -218,4 +218,4 @@ def revisar_check():
         X +=1  
 
 # evitar que la pantalla se cierre
-aplicacion.mainloop()
+
