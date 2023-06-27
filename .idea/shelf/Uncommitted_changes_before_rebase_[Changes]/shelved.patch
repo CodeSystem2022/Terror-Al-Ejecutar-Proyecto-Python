@@ -1,0 +1,20 @@
+Index: Ventana-y-Paneles/mi_restaurante.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from tkinter import *\r\n\r\n\r\n# iniciar tkinter\r\naplicacion = Tk()\r\n\r\n# tamaño de la ventana\r\naplicacion.geometry('1020x630+0+0')\r\n\r\n# evitar maximizar\r\naplicacion.resizable(0, 0)\r\n\r\n# titulo de la ventana\r\naplicacion.title(\"Mi Restaurante - Sistema de Facturación\")\r\n\r\n# color de fondo de la ventana\r\naplicacion.config(bg='burlywood')\r\n\r\n# panel superior\r\npanel_superior = Frame(aplicacion, bd=1, relief=FLAT)\r\npanel_superior.pack(side=TOP)\r\n\r\n# etiqueta titulo\r\netiqueta_titulo = Label(panel_superior, text='Sistema de Facturacion', fg='azure4',\r\n                        font=('Dosis', 58), bg='burlywood', width=27)\r\netiqueta_titulo.grid(row=0, column=0)\r\n\r\n# panel izquierdo\r\npanel_izquierdo = Frame(aplicacion, bd=1, relief=FLAT)\r\npanel_izquierdo.pack(side=LEFT)\r\n\r\n# panel costos\r\npanel_costos = Frame(panel_izquierdo, bd=1, relief=FLAT)\r\npanel_costos.pack(side=BOTTOM)\r\n\r\n# panel comidas\r\npanel_comidas = LabelFrame(panel_izquierdo, text='Comida', font=('Dosis', 19, 'bold'),\r\n                           bd=1, relief=FLAT, fg='azure4')\r\npanel_comidas.pack(side=LEFT)\r\n\r\n# panel bebidas\r\npanel_bebidas = LabelFrame(panel_izquierdo, text='Bebidas', font=('Dosis', 19, 'bold'),\r\n                           bd=1, relief=FLAT, fg='azure4')\r\npanel_bebidas.pack(side=LEFT)\r\n\r\n# panel postres\r\npanel_postres = LabelFrame(panel_izquierdo, text='Postres', font=('Dosis', 19, 'bold'),\r\n                           bd=1, relief=FLAT, fg='azure4')\r\npanel_postres.pack(side=LEFT)\r\n\r\n# panel derecha\r\npanel_derecha = Frame(aplicacion, bd=1, relief=FLAT)\r\npanel_derecha.pack(side=RIGHT)\r\n\r\n# panel calculadora\r\npanel_calculadora = Frame(panel_derecha, bd=1, relief=FLAT, bg='burlywood')\r\npanel_calculadora.pack()\r\n\r\n# panel recibo\r\npanel_recibo = Frame(panel_derecha, bd=1, relief=FLAT, bg='burlywood')\r\npanel_recibo.pack()\r\n\r\n# panel botones\r\npanel_botones = Frame(panel_derecha, bd=1, relief=FLAT, bg='burlywood')\r\npanel_botones.pack()\r\n\r\n# evitar que la pantalla se cierre\r\naplicacion.mainloop()
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Ventana-y-Paneles/mi_restaurante.py b/Ventana-y-Paneles/mi_restaurante.py
+--- a/Ventana-y-Paneles/mi_restaurante.py	(revision 853622ac9f736b669e45f193d87cd48ab31e2db8)
++++ b/Ventana-y-Paneles/mi_restaurante.py	(date 1686787781290)
+@@ -65,4 +65,6 @@
+ panel_botones.pack()
+ 
+ # evitar que la pantalla se cierre
+-aplicacion.mainloop()
+\ No newline at end of file
++aplicacion.mainloop()
++
++# Haciendo pruebas
+\ No newline at end of file
