@@ -31,7 +31,7 @@ panel_izquierdo = Frame(aplicacion, bd=1, relief=FLAT)
 panel_izquierdo.pack(side=LEFT)
 
 # panel costos
-panel_costos = Frame(panel_izquierdo, bd=1, relief=FLAT)
+panel_costos = Frame(panel_izquierdo, bd=1, relief=FLAT, bg='azure4', padx=50)
 panel_costos.pack(side=BOTTOM)
 
 # panel comidas
