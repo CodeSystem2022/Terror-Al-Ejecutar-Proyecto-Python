@@ -51,7 +51,10 @@ def guardar():
     archivo.write(info_recibo)
     archivo.close()
     messagebox.showinfo('Información', 'Su recibo ha sido guardado')
-      
+
+
+# Panel de Reseteo de Pantalla.
+
 def resetear():
     texto_recibo.delete(0.1, END)
 
