@@ -9,94 +9,6 @@ precios_bebidas = [0.25, 0.99, 1.21, 1.54, 1.08, 1.10, 2.00, 1.58]
 precios_postres = [1.54, 1.68, 1.32, 1.97, 2.55, 2.14, 1.94, 1.74]
 
 
-def recibo():
-    texto_recibo.delete(1.0, END)
-    num_recibo = f'N# - {random.randint(1000, 9999)}'
-    fecha = datetime.datetime.now()
-    fecha_recibo = f'{fecha.day}/{fecha.month}/{fecha.year} - {fecha.hour}: {fecha.minute}'
-    texto_recibo.insert(END, f'Datos:\t{num_recibo}\t\t{fecha_recibo}\n')
-    texto_recibo.insert(END, f'*' * 47 + '\n')
-    texto_recibo.insert(END, 'Items\t\tCant.\tCosto Items\n')
-    texto_recibo.insert(END, f'-' * 54 + '\n')
-
-    x = 0
-    for comida in texto_comida:
-        if comida.get() != '0':
-            texto_recibo.insert(END, f'{lista_comidas[x]}\t\t{comida.get()}\t'
-                                     f'$ {int(comida.get()) * precios_comida[x]}\n')
-        x += 1
-
-    x = 0
-    for bebida in texto_comida:
-        if bebida.get() != '0':
-            texto_recibo.insert(END, f'{lista_bebidas[x]}\t\t{bebida.get()}\t'
-                                     f'$ {int(bebida.get()) * precios_bebidas[x]}\n')
-        x += 1
-
-    x = 0
-    for postres in texto_postres:
-        if postres.get() != '0':
-            texto_recibo.insert(END, f'{lista_postres[x]}\t\t{postres.get()}\t'
-                                     f'$ {int(postres.get()) * precios_postres[x]}\n')
-        x += 1
-
-    texto_recibo.insert(END, f'-' * 54 + '\n')
-    texto_recibo.insert(END, f' Costo de la Comida: \t\t\t{var_costo_comida.get()}\n')
-    texto_recibo.insert(END, f' Costo de la Bebida: \t\t\t{var_costo_bebida.get()}\n')
-    texto_recibo.insert(END, f' Costo de la Postres: \t\t\t{var_costo_postres.get()}\n')
-    texto_recibo.insert(END, f'-' * 54 + '\n')
-    texto_recibo.insert(END, f' Sub-total : \t\t\t{var_subtotal.get()}\n')
-    texto_recibo.insert(END, f' Impuetos: \t\t\t{var_impuesto.get()}\n')
-    texto_recibo.insert(END, f' Total : \t\t\t{var_total.get()}\n')
-    texto_recibo.insert(END, f'*' * 47 + '\n')
-    texto_recibo.insert(END, 'Lo esperamos pronto')
-
-
-def guardar():
-    info_recibo = texto_recibo.get(1.0, END)
-    archivo = filedialog.asksaveasfile(mode='w', defaultextension='.txt')
-    archivo.write(info_recibo)
-    archivo.close()
-    messagebox.showinfo('Información', 'Su recibo ha sido guardado')
-
-
-# Panel de Reseteo de Pantalla.
-
-def resetear():
-    texto_recibo.delete(0.1, END)
-
-    for texto in texto_comida:
-        texto.set('0')
-    for texto in texto_bebida:
-        texto.set('0')
-    for texto in texto_postres:
-        texto.set('0')
-
-    for cuadro in cuadros_comida:
-        cuadro.config(state=DISABLED)
-    for cuadro in cuadros_bebida:
-        cuadro.config(state=DISABLED)
-    for cuadro in cuadros_postres:
-        cuadro.config(state=DISABLED)
-
-    for v in variables_comida:
-        v.set(0)
-    for v in variables_bebida:
-        v.set(0)
-    for v in variables_comida:
-        v.set(0)
-
-    var_costo_comida.set('')
-    var_costo_bebida.set('')
-    var_costo_postres.set('')
-    var_subtotal.set('')
-    var_impuesto.set('')
-    var_total.set('')
-
-
-operador = ''
-
-
 def click_boton(numero):
     global operador
     operador = operador + numero
@@ -105,27 +17,6 @@ def click_boton(numero):
 
 
 def borrar():
-    global operador
-    operador = ''
-    visor_calculadora.delete(0, END)
-
-
-def obtener_resultado():
-    global operador
-    resultado = str(eval(operador))
-    visor_calculadora.delete(0, END)
-    visor_calculadora.insert(0, resultado)
-    operador = ''
-
-
-def click_boton(numero):
-    global operador
-    operador = operador + numero
-    visor_calculadora.delete(0, END)
-    visor_calculadora.insert(END, operador)
-
-
-def borrador():
     global operador
     operador = ''
     visor_calculadora.delete(0, END)
@@ -208,13 +99,96 @@ def total():
     var_total.set(f'$ {round(total, 2)}')
 
 
-# FRONTEND
+def recibo():
+    texto_recibo.delete(1.0, END)
+    num_recibo = f'N# - {random.randint(1000, 9999)}'
+    fecha = datetime.datetime.now()
+    fecha_recibo = f'{fecha.day}/{fecha.month}/{fecha.year} - {fecha.hour}: {fecha.minute}'
+    texto_recibo.insert(END, f'Datos:\t{num_recibo}\t\t{fecha_recibo}\n')
+    texto_recibo.insert(END, f'*' * 47 + '\n')
+    texto_recibo.insert(END, 'Items\t\tCant.\tCosto Items\n')
+    texto_recibo.insert(END, f'-' * 54 + '\n')
+
+    x = 0
+    for comida in texto_comida:
+        if comida.get() != '0':
+            texto_recibo.insert(END, f'{lista_comidas[x]}\t\t{comida.get()}\t'
+                                     f'$ {int(comida.get()) * precios_comida[x]}\n')
+        x += 1
+
+    x = 0
+    for bebida in texto_comida:
+        if bebida.get() != '0':
+            texto_recibo.insert(END, f'{lista_bebidas[x]}\t\t{bebida.get()}\t'
+                                     f'$ {int(bebida.get()) * precios_bebidas[x]}\n')
+        x += 1
+
+    x = 0
+    for postres in texto_postres:
+        if postres.get() != '0':
+            texto_recibo.insert(END, f'{lista_postres[x]}\t\t{postres.get()}\t'
+                                     f'$ {int(postres.get()) * precios_postres[x]}\n')
+        x += 1
+
+    texto_recibo.insert(END, f'-' * 54 + '\n')
+    texto_recibo.insert(END, f' Costo de la Comida: \t\t\t{var_costo_comida.get()}\n')
+    texto_recibo.insert(END, f' Costo de la Bebida: \t\t\t{var_costo_bebida.get()}\n')
+    texto_recibo.insert(END, f' Costo de la Postres: \t\t\t{var_costo_postres.get()}\n')
+    texto_recibo.insert(END, f'-' * 54 + '\n')
+    texto_recibo.insert(END, f' Sub-total : \t\t\t{var_subtotal.get()}\n')
+    texto_recibo.insert(END, f' Impuetos: \t\t\t{var_impuesto.get()}\n')
+    texto_recibo.insert(END, f' Total : \t\t\t{var_total.get()}\n')
+    texto_recibo.insert(END, f'*' * 47 + '\n')
+    texto_recibo.insert(END, 'Lo esperamos pronto')
+
+
+def guardar():
+    info_recibo = texto_recibo.get(1.0, END)
+    archivo = filedialog.asksaveasfile(mode='w', defaultextension='.txt')
+    archivo.write(info_recibo)
+    archivo.close()
+    messagebox.showinfo('Información', 'Su recibo ha sido guardado')
+
+
+def resetear():
+    texto_recibo.delete(0.1, END)
+
+    for texto in texto_comida:
+        texto.set('0')
+    for texto in texto_bebida:
+        texto.set('0')
+    for texto in texto_postres:
+        texto.set('0')
+
+    for cuadro in cuadros_comida:
+        cuadro.config(state=DISABLED)
+    for cuadro in cuadros_bebida:
+        cuadro.config(state=DISABLED)
+    for cuadro in cuadros_postres:
+        cuadro.config(state=DISABLED)
+
+    for v in variables_comida:
+        v.set(0)
+    for v in variables_bebida:
+        v.set(0)
+    for v in variables_comida:
+        v.set(0)
+
+    var_costo_comida.set('')
+    var_costo_bebida.set('')
+    var_costo_postres.set('')
+    var_subtotal.set('')
+    var_impuesto.set('')
+    var_total.set('')
+
+
+
 
 # iniciar tkinter
 aplicacion = Tk()
 
 # tamaño de la ventana
-aplicacion.geometry('1020x630+0+0')
+aplicacion.geometry('1200x630+0+0')
 
 # evitar maximizar
 aplicacion.resizable(0, 0)
@@ -485,94 +459,7 @@ texto_recibo = Text(panel_recibo,
 texto_recibo.grid(row=0,
                   column=0)
 
-
-
-# etiquetas de costo y campos de entrada
-etiqueta_costo_comida = Label(panel_costos,
-                              text='Costo Comida',
-                              font=('Dosis', 12, 'bold'),
-                              bg='azure4',
-                              fg='white')
-etiqueta_costo_comida.grid(row=0, column=0)
-
-texto_costo_comida = Entry(panel_costos,
-                           font=('Dosis', 12, 'bold'),
-                           bd=1,
-                           width=10,
-                           state='readonly',
-                           textvariable=var_costo_comida)
-texto_costo_comida.grid(row=0, column=1, padx=41)
-
-etiqueta_costo_bebida = Label(panel_costos,
-                              text='Costo Bebida',
-                              font=('Dosis', 12, 'bold'),
-                              bg='azure4',
-                              fg='white')
-etiqueta_costo_bebida.grid(row=1, column=0)
-
-texto_costo_bebida = Entry(panel_costos,
-                           font=('Dosis', 12, 'bold'),
-                           bd=1,
-                           width=10,
-                           state='readonly',
-                           textvariable=var_costo_bebida)
-texto_costo_bebida.grid(row=1, column=1, padx=41)
-
-etiqueta_costo_postres = Label(panel_costos,
-                               text='Costo Bebida',
-                               font=('Dosis', 12, 'bold'),
-                               bg='azure4',
-                               fg='white')
-etiqueta_costo_postres.grid(row=1, column=0)
-
-texto_costo_postres = Entry(panel_costos,
-                            font=('Dosis', 12, 'bold'),
-                            bd=1,
-                            width=10,
-                            state='readonly',
-                            textvariable=var_costo_bebida)
-texto_costo_postres.grid(row=1, column=1, padx=41)
-
-etiqueta_subtotal = Label(panel_costos,
-                          text='Subtotal',
-                          font=('Dosis', 12, 'bold'),
-                          bg='azure4',
-                          fg='white')
-etiqueta_subtotal.grid(row=0, column=2)
-
-etiqueta_impuestos = Label(panel_costos,
-                           text='Impuestos',
-                           font=('Dosis', 12, 'bold'),
-                           bg='azure4',
-                           fg='white')
-etiqueta_impuestos.grid(row=1, column=2)
-
-texto_impuesto = Entry(panel_costos,
-                       font=('Dosis', 12, 'bold'),
-                       bd=1,
-                       width=10,
-                       state='readonly',
-                       textvariable=var_impuesto)
-texto_impuestos.grid(row=1, column=3, padx=41)
-
-etiqueta_total = Label(panel_costos,
-                       text='Total',
-                       font=('Dosis', 12, 'bold'),
-                       bg='azure4',
-                       fg='white')
-etiqueta_total.grid(row=2, column=2)
-
-texto_total = Entry(panel_costos,
-                    font=('Dosis', 12, 'bold'),
-                    bd=1,
-                    width=10,
-                    state='readonly',
-                    textvariable=var_total)
-texto_total.grid(row=2, column=3, padx=41)
-
-# BACKEND
-
-# --------------CALCULADORA-----------------------
+# calculadora
 visor_calculadora = Entry(panel_calculadora,
                           font=('Dosis', 16, 'bold'),
                           width=32,
