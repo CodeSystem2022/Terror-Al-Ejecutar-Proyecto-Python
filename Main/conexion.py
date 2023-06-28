@@ -1,56 +1,39 @@
-import psycopg2 as bd
-from logger_base import log
-import sys
+import mysql.connector
+from mysql.connector import Error
 
-class Conexion:
-    #Creamos los atributos de clase
-    _DATABASE = 'test_bd'
-    _USERNAME = 'postgres'
-    _PASSWORD = 'Aquiles2710'
-    _DB_PORT = '5432'
-    _HOST = '127.0.0.1'
-    _conexion = None
-    _cursor = None
+class DAO():
 
-    #Crearemos los metodos de clase para ello usaremos @classmethod
-    @classmethod
-    def obtenerConexion(cls):
-        if cls._conexion is None:
-            try:
-                #utilizamos bd de psycopg2
-                cls._conexion = bd.connect(host=cls._HOST,
-                                           user=cls._USERNAME,
-                                           password=cls._PASSWORD,
-                                           port=cls._DB_PORT,
-                                           database=cls._DATABASE)
-                log.debug(f'Conexion Exitosa {cls._conexion}')
-                return cls._conexion
-
-            except Exception as e:
-                log.error(f'Ocurrio un error de tipo {e}')
-                sys.exit()
+    def __init__(self):
+        try:
+            self.conexion = mysql.connector.connect(
+                host='localhost',
+                port=3306,
+                user='root',
+                pasword='admin',
+                db='facturacion'
+            )
+        except Error as ex:
+            print(f"Error al intentar laa conexion: {0}".format(ex))
 
 
-        else:
-            return cls._conexion
-
-
-
-    @classmethod
-    def obtenerCursor(cls):
-        if cls._cursor is None:
-            try:
-                cls._cursor = cls.obtenerConexion().cursor()
-                log.debug(f'Se abrio correctamente el cursor: {cls._cursor}')
-                return cls._cursor
-
-            except Exception as e:
-                log.error(f'Ocurrio un error: {e}')
-                sys.exit()
-
-        else:
-            return cls._cursor
-
-
-
-
+        def listarFacturas(self):
+            if self.conexion.is_connected():
+                try:
+                    cursor = self.conexion.cursor()
+                    cursor.execute("SELECT * FROM facturacion ORDER BY idfacturacion ASC")
+                    resultados = cursor.fetchall()
+                    return resultados
+                except Error as e:
+                    print(f"Error al intentar la conexion: {0}".format(ex))
+                    
+                    
+        def registrarFactura(self, factura):
+            if self.conexion.is_Connected():
+                try:
+                    cursor = self.conexion.cursor()
+                    sql = "INSERT INTO facturacion (subtotal, impuestos, total) VALUES ('{0}', '{1}', '{2}')"
+                    cursor.execute(sql.format(factura[0], factura[1], factura[2], factura[3]))
+                    self.connection.commit()
+                    print("Factura registrada\n")
+                except Error as ex:
+                    print("Error al intentar la conexion: {0}".format(ex))

@@ -2,12 +2,14 @@ from tkinter import *
 import random
 import datetime
 from tkinter import filedialog, messagebox
+from Main.conexion import DAO
+import funciones
 
 operador = ''
 precios_comida = [1.32, 1.65, 2.31, 3.22, 1.22, 1.99, 2.05, 2, 65]
 precios_bebidas = [0.25, 0.99, 1.21, 1.54, 1.08, 1.10, 2.00, 1.58]
 precios_postres = [1.54, 1.68, 1.32, 1.97, 2.55, 2.14, 1.94, 1.74]
-
+dao = DAO()
 
 def click_boton(numero):
     global operador
@@ -180,6 +182,30 @@ def resetear():
     var_subtotal.set('')
     var_impuesto.set('')
     var_total.set('')
+
+def mostrarbd():
+    
+    try:
+        facturas = dao.listarFacturas()
+        if len(facturas) > 0:
+            funciones.listarFacturas(facturas)
+        else:
+            print("No se encontraron facturas")
+    except:
+        print("Ocurrio un error")
+
+
+def registrarFactura(factura):
+    factura = None
+    try:
+        dao.registrarFactura(factura)
+    except:
+        print("Ocurrio un error")
+
+
+
+
+
 
 
 
@@ -426,7 +452,7 @@ texto_total = Entry(panel_costos,
 texto_total.grid(row=2, column=3, padx=41)
 
 # botones
-botones = ['total', 'recibo', 'guardar', 'resetear']
+botones = ['total', 'recibo', 'guardar', 'resetear', 'Facturas']
 botones_creados = []
 
 columnas = 0
@@ -449,7 +475,7 @@ botones_creados[0].config(command=total)
 botones_creados[1].config(command=recibo)
 botones_creados[2].config(command=guardar)
 botones_creados[3].config(command=resetear)
-
+botones_creados[4].config(command=mostrarbd)
 # area de recibo
 texto_recibo = Text(panel_recibo,
                     font=('Dosis', 12, 'bold'),
