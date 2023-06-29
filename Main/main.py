@@ -4,7 +4,7 @@ import datetime
 from tkinter import filedialog, messagebox
 
 from Main.conexion import DAO
-import funciones
+
 
 operador = ''
 precios_comida = [1.32, 1.65, 2.31, 3.22, 1.22, 1.99, 2.05, 2, 65]
@@ -205,12 +205,22 @@ def mostrarbd():
     try:
         facturas = dao.listarFacturas()
         if len(facturas) > 0:
-            funciones.listarFacturas(facturas)
+            texto_recibo.insert(END, f'-' + listarFacturas(facturas)+'\n')
+
         else:
             print("No se encontraron facturas")
     except:
         print("Ocurrio un error")
 
+def listarFacturas(facturas):
+    print("\nFacturas: \n")
+    contador = 1
+    for fact in facturas:
+        datos="{0}. idFacturacion  | Subtotal   | Impuestos  | Total: \n" \
+              "               {1}                     {2}                {3}                 {4} \n"
+        texto_recibo.insert(END, f'-'+ datos.format(contador, fact[0], fact[1], fact[2], fact[3])+'\n')
+        contador += 1
+    print(" ")
 
 def registrarFactura():
     subtotal = subtotalDB

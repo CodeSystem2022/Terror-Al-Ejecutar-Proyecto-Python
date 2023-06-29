@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c510fc98-f408-41d8-9291-c9adba1e7f13" name="Changes" comment="corrigiendo errores, proyecto funcionando">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_6_2023_11_12__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_6_2023_11_12__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_6_2023_11_12__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_27_6_2023_11_12__Changes_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main/conexion.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main/conexion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main/funciones.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main/funciones.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
