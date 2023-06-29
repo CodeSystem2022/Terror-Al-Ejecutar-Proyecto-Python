@@ -9,7 +9,7 @@ operador = ''
 precios_comida = [1.32, 1.65, 2.31, 3.22, 1.22, 1.99, 2.05, 2, 65]
 precios_bebidas = [0.25, 0.99, 1.21, 1.54, 1.08, 1.10, 2.00, 1.58]
 precios_postres = [1.54, 1.68, 1.32, 1.97, 2.55, 2.14, 1.94, 1.74]
-dao = DAO()
+
 
 def click_boton(numero):
     global operador
@@ -145,11 +145,22 @@ def recibo():
 
 
 def guardar():
-    info_recibo = texto_recibo.get(1.0, END)
-    archivo = filedialog.asksaveasfile(mode='w', defaultextension='.txt')
-    archivo.write(info_recibo)
-    archivo.close()
-    messagebox.showinfo('Información', 'Su recibo ha sido guardado')
+    try:
+        factura = (1.5, 2.2, 3.3)
+        info_recibo = texto_recibo.get(1.0, END)
+        archivo = filedialog.asksaveasfile(mode='w', defaultextension='.txt')
+        archivo.write(info_recibo)
+        archivo.close()
+        print("antes de bd")
+        dao_instance = DAO()  # Crea una instancia de la clase DAO
+        dao_instance.registrarFactura(factura)
+        print("Factura registrada")
+        messagebox.showinfo('Información', 'Su recibo ha sido guardado')
+
+    except Exception as ex:
+        print(f"Ocurrió un error: {ex}")
+
+
 
 
 def resetear():
@@ -184,7 +195,7 @@ def resetear():
     var_total.set('')
 
 def mostrarbd():
-    
+    dao = DAO()
     try:
         facturas = dao.listarFacturas()
         if len(facturas) > 0:
@@ -195,12 +206,7 @@ def mostrarbd():
         print("Ocurrio un error")
 
 
-def registrarFactura(factura):
-    factura = None
-    try:
-        dao.registrarFactura(factura)
-    except:
-        print("Ocurrio un error")
+
 
 
 
@@ -214,7 +220,7 @@ def registrarFactura(factura):
 aplicacion = Tk()
 
 # tamaño de la ventana
-aplicacion.geometry('1200x630+0+0')
+aplicacion.geometry('1300x630+0+0')
 
 # evitar maximizar
 aplicacion.resizable(0, 0)
