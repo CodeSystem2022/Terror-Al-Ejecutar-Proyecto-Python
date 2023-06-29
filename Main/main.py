@@ -2,6 +2,9 @@ from tkinter import *
 import random
 import datetime
 from tkinter import filedialog, messagebox
+from mysql.connector import cursor
+
+from Main import conexion
 from Main.conexion import DAO
 import funciones
 
@@ -10,6 +13,7 @@ precios_comida = [1.32, 1.65, 2.31, 3.22, 1.22, 1.99, 2.05, 2, 65]
 precios_bebidas = [0.25, 0.99, 1.21, 1.54, 1.08, 1.10, 2.00, 1.58]
 precios_postres = [1.54, 1.68, 1.32, 1.97, 2.55, 2.14, 1.94, 1.74]
 dao = DAO()
+
 
 def click_boton(numero):
     global operador
@@ -70,6 +74,11 @@ def revisar_check():
         x += 1
 
 
+subtotalDB = 0
+impuestosDB = 0
+totalDB = 0
+
+
 def total():
     sub_total_comida = 0
     p = 0
@@ -93,12 +102,21 @@ def total():
     impuestos = sub_total * 0.07
     total = sub_total + impuestos
 
+    global subtotalDB
+    subtotalDB = round(sub_total, 2)
+    global impuestosDB
+    impuestosDB = round(impuestos, 2)
+    global totalDB
+    totalDB = round(total, 2)
+    print('dentro del bloque ', subtotalDB)
+    #registrarFactura(subtotalDB, totalDB, impuestosDB)
     var_costo_comida.set(f'$ {round(sub_total_comida, 2)}')
     var_costo_bebida.set(f'$ {round(sub_total_bebida, 2)}')
     var_costo_postres.set(f'$ {round(sub_total_postres, 2)}')
     var_subtotal.set(f'$ {round(sub_total, 2)}')
     var_impuesto.set(f'$ {round(impuestos, 2)}')
     var_total.set(f'$ {round(total, 2)}')
+
 
 
 def recibo():
@@ -183,8 +201,8 @@ def resetear():
     var_impuesto.set('')
     var_total.set('')
 
+
 def mostrarbd():
-    
     try:
         facturas = dao.listarFacturas()
         if len(facturas) > 0:
@@ -195,18 +213,15 @@ def mostrarbd():
         print("Ocurrio un error")
 
 
-def registrarFactura(factura):
-    factura = None
+def registrarFactura():
+    subtotal = subtotalDB
+    total = totalDB
+    impuesto = impuestosDB
     try:
-        dao.registrarFactura(factura)
+        print(subtotal, impuesto, total)
+        dao.registrar_factura(subtotal, total, impuesto)
     except:
         print("Ocurrio un error")
-
-
-
-
-
-
 
 
 
@@ -473,7 +488,7 @@ for boton in botones:
 
 botones_creados[0].config(command=total)
 botones_creados[1].config(command=recibo)
-botones_creados[2].config(command=guardar)
+botones_creados[2].config(command=registrarFactura)
 botones_creados[3].config(command=resetear)
 botones_creados[4].config(command=mostrarbd)
 # area de recibo
