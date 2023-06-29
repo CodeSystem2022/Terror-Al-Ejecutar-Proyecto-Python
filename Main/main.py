@@ -2,9 +2,7 @@ from tkinter import *
 import random
 import datetime
 from tkinter import filedialog, messagebox
-from mysql.connector import cursor
 
-from Main import conexion
 from Main.conexion import DAO
 import funciones
 
@@ -167,6 +165,7 @@ def guardar():
     archivo = filedialog.asksaveasfile(mode='w', defaultextension='.txt')
     archivo.write(info_recibo)
     archivo.close()
+    registrarFactura()
     messagebox.showinfo('Información', 'Su recibo ha sido guardado')
 
 
@@ -221,7 +220,7 @@ def registrarFactura():
         print(subtotal, impuesto, total)
         dao.registrar_factura(subtotal, total, impuesto)
     except:
-        print("Ocurrio un error")
+        print(f"Ocurrio un error ")
 
 
 
@@ -229,7 +228,7 @@ def registrarFactura():
 aplicacion = Tk()
 
 # tamaño de la ventana
-aplicacion.geometry('1200x630+0+0')
+aplicacion.geometry('1300x630+0+0')
 
 # evitar maximizar
 aplicacion.resizable(0, 0)
@@ -488,7 +487,7 @@ for boton in botones:
 
 botones_creados[0].config(command=total)
 botones_creados[1].config(command=recibo)
-botones_creados[2].config(command=registrarFactura)
+botones_creados[2].config(command=guardar)
 botones_creados[3].config(command=resetear)
 botones_creados[4].config(command=mostrarbd)
 # area de recibo

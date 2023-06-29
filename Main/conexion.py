@@ -8,7 +8,7 @@ class DAO:
                 host='localhost',
                 port=3306,
                 user='root',
-                password='',
+                password='2005',
                 database='facturacion'
             )
             print('Se estableció la conexión')
@@ -26,6 +26,7 @@ class DAO:
                 print(f"Error al intentar la conexión: {ex}")
 
     def registrar_factura(self, subtotal, total, impuesto):
+        global cursor
         if self.conexion.is_connected():
             try:
                 cursor = self.conexion.cursor()
