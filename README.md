@@ -3,6 +3,9 @@
 
 Este repositorio contiene el código fuente de un sistema de facturación para un restaurante. El sistema está desarrollado en Python utilizando la biblioteca Tkinter para la interfaz gráfica.
 
+![image](https://github.com/CodeSystem2022/Terror-Al-Ejecutar-Proyecto-Python/assets/98287091/16a8cedf-02e0-4e9d-99d6-9cf3a419cea6)
+
+
 ## Características
 
 - Permite registrar y calcular facturas para los diferentes productos disponibles en el restaurante (comidas, bebidas, postres).
