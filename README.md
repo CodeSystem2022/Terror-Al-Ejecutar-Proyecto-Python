@@ -1,7 +1,9 @@
-# Terror Al Ejecutar | Proyecto Python
+# Terror Al Ejecutar | Proyecto Integrador Python
+# Integrantes: Walter Diaz , Aquiles Martinez , Rojas Jorge Daniel , German Ariel Abalos , Iván De La Fuente Zárate , José Facundo Palomo , Vanesa Jimena Moreno , Ramiro Michat, Gabriel Napolitano
+
 # Mi Restaurante - Sistema de Facturación
 
-Este repositorio contiene el código fuente de un sistema de facturación para un restaurante. El sistema está desarrollado en Python utilizando la biblioteca Tkinter para la interfaz gráfica.
+Este repositorio contiene el código fuente de un sistema de facturación para un restaurante. El sistema está desarrollado en Python utilizando la biblioteca Tkinter para la interfaz gráfica y conexión a bases de datos Mysql.
 
 ![image](https://github.com/CodeSystem2022/Terror-Al-Ejecutar-Proyecto-Python/assets/98287091/16a8cedf-02e0-4e9d-99d6-9cf3a419cea6)
 
