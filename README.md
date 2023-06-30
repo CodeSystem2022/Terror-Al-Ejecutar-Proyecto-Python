@@ -16,6 +16,7 @@ Este repositorio contiene el código fuente de un sistema de facturación para u
 ## Requisitos
 
 - Python 3.x
+- Instalar el conector mysql-connector-python
 - Biblioteca Tkinter
 
 ## Uso
