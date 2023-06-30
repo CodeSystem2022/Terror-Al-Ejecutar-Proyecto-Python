@@ -1,5 +1,6 @@
 # Terror Al Ejecutar | Proyecto Integrador Python
-# Integrantes: Walter Diaz , Aquiles Martinez , Rojas Jorge Daniel , German Ariel Abalos , Iván De La Fuente Zárate , José Facundo Palomo , Vanesa Jimena Moreno , Ramiro Michat, Gabriel Napolitano
+# Integrantes: 
+Walter Diaz , Aquiles Martinez , Rojas Jorge Daniel , German Ariel Abalos , Iván De La Fuente Zárate , José Facundo Palomo , Vanesa Jimena Moreno , Ramiro Michat, Gabriel Napolitano
 
 # Mi Restaurante - Sistema de Facturación
 
