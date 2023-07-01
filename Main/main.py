@@ -7,9 +7,9 @@ from Main.conexion import DAO
 
 
 operador = ''
-precios_comida = [1.32, 1.65, 2.31, 3.22, 1.22, 1.99, 2.05, 2, 65]
-precios_bebidas = [0.25, 0.99, 1.21, 1.54, 1.08, 1.10, 2.00, 1.58]
-precios_postres = [1.54, 1.68, 1.32, 1.97, 2.55, 2.14, 1.94, 1.74]
+precios_comida = [2900, 300, 2100, 2600,2500, 1500, 2300, 3000]
+precios_bebidas = [400, 400, 300, 450, 800, 790, 350, 500]
+precios_postres = [360, 450, 500, 400, 600, 2000, 3000, 4000]
 dao = DAO()
 
 
@@ -298,9 +298,9 @@ panel_botones = Frame(panel_derecha, bd=1, relief=FLAT, bg='burlywood')
 panel_botones.pack()
 
 # lista de productos
-lista_comidas = ['pollo', 'cordero', 'salmon', 'merluza', 'kebab', 'pizza1', 'pizza2', 'pizza3']
-lista_bebidas = ['agua', 'soda', 'jugo', 'cola', 'vino1', 'vino2', 'cerveza1', 'cerveza2']
-lista_postres = ['helado', 'fruta', 'brownies', 'flan', 'mousse', 'pastel1', 'pastel2', 'pastel3']
+lista_comidas = ['pollo', 'empanada', 'ensalada', 'lomo', 'milanesa', 'pizza1', 'pizza2', 'pizza3']
+lista_bebidas = ['agua', 'soda', 'jugo', 'gaseosa', 'vino', 'licuado', 'ensal.frt', 'cerveza']
+lista_postres = ['helado', 'helado2', 'brownies', 'flan', 'mousse', 'torta1', 'torta2', 'torta3']
 
 # generar items comida
 variables_comida = []
