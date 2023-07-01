@@ -93,7 +93,7 @@ def total():
     sub_total_postres = 0
     p = 0
     for cantidad in texto_postres:
-        sub_total_postres = sub_total_comida + (float(cantidad.get()) * precios_postres[p])
+        sub_total_postres = sub_total_postre + (float(cantidad.get()) * precios_postres[p])
         p += 1
 
     sub_total = sub_total_comida + sub_total_bebida + sub_total_postres
